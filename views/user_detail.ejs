@@ -2,8 +2,42 @@
 <%- include('_head') -%>
 <%- include('_header') -%>
 <body>
+<img src = "<%= coverImageUrl %>" alt = "Text for if the URL doesn't work" width = 500px>
 <h1><%= name %></h1>
 <img src = "<%= profileImageUrl %>" alt = "Text for if the URL doesn't work" width = 100px>
+    <h3>Posts by the user</h3>
+    <ol>
+    <% for(i=0; i<posts.length; i++)
+        {%> 
+            <li>
+            Post ID: <%= posts[i].id %>, 
+            Message: <%= posts[i].message %>, 
+            Image: <a href="<%= posts[i].imageUrl %>" target="_blank">Click here to view image</a>
+        </li>
+        <%}%>
+    </ol>
+
+    <h3>Likes by the user</h3>
+    <ol>
+    <% for(i=0; i<likes.length; i++)
+        {%> 
+            <li>
+            Post ID: <%= likes[i].id %>, 
+            Message: <%= likes[i].message %>, 
+            </li>
+        <%}%>
+    </ol>
+
+    <h3>Dislikes by the user</h3>
+    <ol>
+    <% for(i=0; i<dislikes.length; i++)
+        {%> 
+            <li>
+            Post ID: <%= dislikes[i].id %>, 
+            Message: <%= dislikes[i].message %>, 
+        </li>
+        <%}%>
+    </ol>
 </body>
 <%- include('_footer') -%>
 </html>
