@@ -27,7 +27,8 @@ router.post('/create/',
 
     const errors = validationResult(request);
     if (!errors.isEmpty()) {
-        return response.status(400).json({errors: errors.array()});
+        // return response.status(400).json({errors: errors.array()});
+        return response.render('create_user_error')
     }
     const user = request.body;
 
