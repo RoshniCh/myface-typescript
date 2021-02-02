@@ -6,8 +6,9 @@
 <ol>
     <% results.forEach(function(user) {%>
         <li>
-            <%= user.name %>
-            <a href="/users/<%= user.id %>">Go to profile</a>
+            <a href="/users/<%= user.id %>"><%= user.name %></a> <br><br>
+            <a href="<%= user.profileImageUrl %>" target="_blank">
+                <img src="<%= user.profileImageUrl %>" height=50 width=50 alt="No image found"></a> <br>
         </li>
     <% }); %>
 </ol>
