@@ -6,10 +6,32 @@
 <ol>
     <% results.forEach(function(post) {%>
         <li>
-            <%= post.message %>
+            Post ID: <%= post.id %>, 
+            Message: <%= post.message %>, 
+            Image: <a href="<%= post.imageUrl %>" target="_blank">Click here to view image</a> <br>
+            Created: <%= post.createdAt %>, 
+            Posted by: <%= post.postedBy.username %> <br>
+            Likes: <%= post.likedBy.length %>, 
+            Dislikes: <%= post.dislikedBy.length %> <br>
+
+            <!-- put form here -->
+            <form method="post" action="/posts/<%= post.id %>/like/">   
+                <input type="hidden" name="postId" value=<%= post.id %>>            
+                <button type="submit">Like</button>
+            </form>
+            <form method="post" action="/posts/<%= post.id %>/dislike/">   
+                <input type="hidden" name="postId" value=<%= post.id %>>            
+                <button type="submit">Dislike</button>
+            </form>
         </li>
     <% }); %>
 </ol>
+<%if (previous) { %>
+    <a href="<%= previous %>">Previous</a>
+<% } %>
+<%if (next) { %>
+    <a href="<%= next %>">Next</a>
+<% } %>
 </body>
 <%- include('_footer') -%>
 </html>
