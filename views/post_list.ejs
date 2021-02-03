@@ -3,10 +3,11 @@
 <%- include('_header') -%>
 <body>
 <h1>Posts</h1>
-<ol>
+<table>
     <% results.forEach(function(post) {%>
-        <li>
-            <!-- Post ID: <%= post.id %>,  -->
+        <tr>
+            <td>
+            Post ID: <%= post.id %>, 
             <%= post.message %> <br> <br>
             <a href="<%= post.imageUrl %>" target="_blank">
                 <img src="<%= post.imageUrl %>" height=100 width=100 alt="No image found"></a> <br>
@@ -18,15 +19,17 @@
             <!-- put form here -->
             <form method="post" action="/posts/<%= post.id %>/like/">   
                 <input type="hidden" name="postId" value=<%= post.id %>>            
-                <button type="submit">Like</button>
+                <button class="post-button" type="submit">Like</button>
             </form>
             <form method="post" action="/posts/<%= post.id %>/dislike/">   
                 <input type="hidden" name="postId" value=<%= post.id %>>            
-                <button type="submit">Dislike</button>
+                <button class="post-button" type="submit">Dislike</button>
             </form>
-        </li>
-    <% }); %>
-</ol>
+        </td>
+        </tr>
+
+        <% }); %>
+</table>
 <%if (previous) { %>
     <a href="<%= previous %>">Previous</a>
 <% } %>
